@@ -1,20 +1,8 @@
-import express from 'express'
-import cors from 'cors'
-import axios from 'axios'
-import path from 'path'
+const express = require('express')
+const path = require('path')
+const cors = require('cors')
+const axios = require('axios')
 
-// import { graphql, buildSchema } from 'graphql';
-// let schema = buildSchema(`
-//   type Query {
-//     hello: String
-//   }
-// `);
-
-// let root = { hello: () => 'Hello world!' };
-
-// graphql(schema, '{ hello }', root).then((response) => {
-//   console.log(response);
-// });
 
 const app = express()
 app.use(cors())
