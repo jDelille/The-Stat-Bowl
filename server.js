@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import axios from 'axios'
+import path from 'path'
 
 // import { graphql, buildSchema } from 'graphql';
 // let schema = buildSchema(`
