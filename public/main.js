@@ -8,7 +8,7 @@ let topDisplay = document.querySelector('.top-display')
 
 
 // TOP GAMEBAR DISPLAY - - - - - - - 
-fetch('http://localhost:4000/display')
+fetch('/display')
     .then(res => res.json())
     .then(data => {
         for(let i = 0; i < data.length; i++) {
@@ -61,7 +61,7 @@ fetch('http://localhost:4000/display')
 // SELECT QUARTERBACK CONTAINER - - - - - - - - 
 btn.addEventListener('click', () => {
     let select = document.getElementById('select-team')
-    fetch(`http://localhost:4000/team/${select.value}`)
+    fetch(`/team/${select.value}`)
     .then(res => res.json())
     .then(data => {
         const {photo, name, team_id, games_played, PlayerPassingCompletions, PlayerPassingAttempts, PlayerPassingCompletionPercentage, PlayerPassingYards, PlayerPassingLong,  PlayerPassingTouchdowns,PlayerPassingInterceptions, PlayerPassingSacks, PlayerRushingYards, FumblesLost, PlayerRushingLong, PlayerRushingTouchdowns} = data
@@ -127,7 +127,7 @@ favBtn.addEventListener('click', (e) => {
     favTeamBtn.addEventListener('click', () => {
         let ya = favTeamBtn.innerText 
         console.log(ya)
-    fetch(`http://localhost:4000/team/${ya}`)
+    fetch(`/team/${ya}`)
         .then(res => res.json())
         .then(data => {
             const {photo, name, team_id, games_played, PlayerPassingCompletions, PlayerPassingAttempts, PlayerPassingCompletionPercentage, PlayerPassingYards, PlayerPassingLong,  PlayerPassingTouchdowns,PlayerPassingInterceptions, PlayerPassingSacks, PlayerRushingYards, FumblesLost, PlayerRushingLong, PlayerRushingTouchdowns} = data
@@ -187,7 +187,7 @@ favBtn.addEventListener('click', (e) => {
 
 // EXPERT PICKS CONTAINER - - - - - - - - 
 let expertPicks = document.querySelector('.expert-picks')
-fetch('http://localhost:4000/games')
+fetch('/games')
     .then(res => res.json())
     .then(data => {
         console.log(data)
