@@ -183,7 +183,7 @@ favBtn.addEventListener('click', (e) => {
 
 // EXPERT PICKS CONTAINER - - - - - - - - 
 let expertPicks = document.querySelector('.expert-picks')
-fetch('http://localhost:4000/games')
+fetch('/games')
     .then(res => res.json())
     .then(data => {
         for(let i = 0; i < data.length; i++) {
