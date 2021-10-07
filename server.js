@@ -33,7 +33,6 @@ app.get('/team/:team_id', async (req, res) => {
     const filterPlayers = response.data.data.filter((playerObj) => {
         return playerObj.team_id === team_id
     })
-    console.log(filterPlayers[0])
     res.status(200).send(filterPlayers[0])
     
 })
@@ -45,15 +44,14 @@ app.get('/match/:home_team_id', async (req, res) => {
     const filterTeam = response.data.filter((playerObj) => {
         return playerObj.home_team_id === home_team_id
     })
-    console.log(filterTeam[0])
     res.status(200).send(filterTeam[0])
     
 })
 
 
-const port = process.env.PORT || 4000
+// const port = process.env.PORT || 4000
 
-
+const port = 4000;
 
 
 app.listen(port, () => console.log('listening on port 4000'))

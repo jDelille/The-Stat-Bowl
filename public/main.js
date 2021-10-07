@@ -66,8 +66,6 @@ btn.addEventListener('click', () => {
     .then(data => {
         const {photo, name, team_id, games_played, PlayerPassingCompletions, PlayerPassingAttempts, PlayerPassingCompletionPercentage, PlayerPassingYards, PlayerPassingLong,  PlayerPassingTouchdowns,PlayerPassingInterceptions, PlayerPassingSacks, PlayerRushingYards, FumblesLost, PlayerRushingLong, PlayerRushingTouchdowns} = data
 
-        console.log(data)
-
         display.innerHTML = `
             <div class="player">
                 <img src = ${photo} />
@@ -120,13 +118,11 @@ favBtn.addEventListener('click', (e) => {
     favorites.innerHTML = `
         <div class='fav-team'> 
             <h1 class="view">${select}</h1>
-             <i class="fas fa-trash-alt"></i>
         </div>
     `
     let favTeamBtn = document.querySelector('.view')
     favTeamBtn.addEventListener('click', () => {
         let ya = favTeamBtn.innerText 
-        console.log(ya)
     fetch(`/team/${ya}`)
         .then(res => res.json())
         .then(data => {
@@ -187,10 +183,9 @@ favBtn.addEventListener('click', (e) => {
 
 // EXPERT PICKS CONTAINER - - - - - - - - 
 let expertPicks = document.querySelector('.expert-picks')
-fetch('/games')
+fetch('http://localhost:4000/games')
     .then(res => res.json())
     .then(data => {
-        console.log(data)
         for(let i = 0; i < data.length; i++) {
             const {home_team_id,home_team_spread, road_team_spread,road_team_id,ht_pct_su_experts,rt_pct_su_experts,ht_pct_ats_experts,home_team_odds_ats_ame, road_team_odds_ats_ame, rt_pct_ats_experts} = data[i]
 
