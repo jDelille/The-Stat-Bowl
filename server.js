@@ -14,13 +14,13 @@ app.get('/', (req, res) => {
 })
 
 app.get('/games', async (req, res) => {
-    const response = await axios.get('https://api.nflpickwatch.com/v1/general/games/2021/3/nfl')
+    const response = await axios.get('https://api.nflpickwatch.com/v1/general/games/2021/5/nfl')
     const expertPicks = response.data
     res.status(200).send(expertPicks)
 })
 
 app.get('/display', async (req, res) => {
-    const response = await axios.get('https://api.nflpickwatch.com/v1/general/games/2021/4/nfl')
+    const response = await axios.get('https://api.nflpickwatch.com/v1/general/games/2021/5/nfl')
     const display = response.data
     res.status(200).send(display)
 })
