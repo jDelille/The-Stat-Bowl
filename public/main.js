@@ -238,6 +238,17 @@ fetch('/games')
 
         // console.log(expertWinCounter + " out of 16 games correct")
 
+
+        const buttonRight = document.querySelector('.scroll-right');
+        const buttonLeft = document.querySelector('.scroll-left');
+    
+        buttonRight.onclick = function () {
+          document.querySelector('.top-display').scrollLeft += 120;
+        };
+        buttonLeft.onclick = function () {
+          document.querySelector('.top-display').scrollLeft -= 120;
+        };
+
         let home_icon = new Image()
             let home_extension = ".svg"
             let team_initials = home_team_id
