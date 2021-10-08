@@ -3,7 +3,6 @@ const path = require('path')
 const cors = require('cors')
 const axios = require('axios')
 
-
 const app = express()
 app.use(cors())
 
@@ -48,9 +47,6 @@ app.get('/match/:home_team_id', async (req, res) => {
     
 })
 
-
-const port = process.env.PORT || 4000
-
-
-
+// const port = process.env.PORT || 4000
+const port = 4000;
 app.listen(port, () => console.log('listening on port 4000'))

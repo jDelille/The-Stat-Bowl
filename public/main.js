@@ -42,7 +42,6 @@ fetch('/display')
             let team_initials = home_team_id
             home_icon.src = "icons/" + team_initials + home_extension
             home_icon.classList.add('svg-logo');
-
             let chinchilla = document.querySelectorAll('.home-logo')
             chinchilla[i].append(home_icon) 
 
@@ -51,8 +50,6 @@ fetch('/display')
             let away_initials = road_team_id
             away_icon.src = "icons/" + away_initials + away_extension
             away_icon.classList.add('svg-logo');
-
-
             let monkey = document.querySelectorAll('.road-logo')
             monkey[i].append(away_icon) 
         }
@@ -73,8 +70,6 @@ btn.addEventListener('click', () => {
                 <h1><span>Team:</span> <br> ${team_id}</h1>
                 <h1><span>Games Played:</span> <br> ${games_played}</h1>
             </div>
-
-            
             <div class="player-stats">
                 <div class="top-stats stats">
                 <div class="stat-labels">  
@@ -107,7 +102,7 @@ btn.addEventListener('click', () => {
                     <h1>${PlayerRushingLong.value}</h1>
                 </div>
             </div>
-        `
+            `
     })
 })
 
@@ -135,8 +130,6 @@ favBtn.addEventListener('click', (e) => {
                 <h1><span>Team:</span> <br> ${team_id}</h1>
                 <h1><span>Games Played:</span> <br> ${games_played}</h1>
             </div>
-
-            
             <div class="player-stats">
                 <div class="top-stats stats">
                 <div class="stat-labels">  
@@ -174,7 +167,6 @@ favBtn.addEventListener('click', (e) => {
         let fav_team_icon = new Image()
         fav_team_icon.src = "icons/" + ya + ".svg"
         fav_team_icon.classList.add('svg-logo');
-
         let fav_icon = document.querySelectorAll('.fav-team-icon')
         fav_icon.append(fav_team_icon) 
         })
@@ -187,7 +179,7 @@ fetch('/games')
     .then(res => res.json())
     .then(data => {
         for(let i = 0; i < data.length; i++) {
-            const {home_team_id,home_team_spread, road_team_spread,road_team_id,ht_pct_su_experts,rt_pct_su_experts,ht_pct_ats_experts,home_team_odds_ats_ame, road_team_odds_ats_ame, rt_pct_ats_experts} = data[i]
+            const {home_team_id,home_team_spread, road_team_spread,road_team_id,ht_pct_su_experts,rt_pct_su_experts,ht_pct_ats_experts,home_team_odds_ats_ame, road_team_odds_ats_ame, rt_pct_ats_experts, game_state, live_home_team_score, live_road_team_score} = data[i]
 
         expertPicks.innerHTML += `
             <div class="games">
@@ -196,25 +188,61 @@ fetch('/games')
                         <div class="home-logo-expert"></div>
                         <h1>${home_team_id}</h1>
                     </div>
-                    <h1>${ht_pct_su_experts}%</h1>
-                    <h1>${ht_pct_ats_experts}%</h1>
+                    <h1 class="home-winner">${ht_pct_su_experts}%</h1>
+                    <h1 class="home-winner-ats">${ht_pct_ats_experts}%</h1>
                 </div>
                 <div class="rt-picks">
                     <div class="logo-name">
                         <div class="road-logo-expert"></div>
                         <h1>${road_team_id}</h1>
                     </div>
-                    <h1>${rt_pct_su_experts}%</h1>
-                    <h1>${rt_pct_ats_experts}%</h1>
+                    <h1 class="road-winner">${rt_pct_su_experts}%</h1>
+                    <h1 class="road-winner-ats">${rt_pct_ats_experts}%</h1>
                 </div>
             </div>
         `
+
+        let homeWinnerSU = document.querySelectorAll('.home-winner')[i]
+        let homeWinnerATS = document.querySelectorAll('.home-winner-ats')[i]
+        let roadWinnerSU = document.querySelectorAll('.road-winner')[i]
+        let roadWinnerATS = document.querySelectorAll('.road-winner-ats')[i]
+
+        if(ht_pct_ats_experts > rt_pct_ats_experts) {
+            homeWinnerSU.classList.add('winner')
+            roadWinnerSU.classList.remove('winner')
+            roadWinnerSU.classList.add('loser')
+        } else {
+            roadWinnerSU.classList.add('winner')
+            homeWinnerSU.classList.remove('winner')
+            homeWinnerSU.classList.add('loser')
+        }
+
+        if(ht_pct_su_experts > rt_pct_su_experts) {
+            homeWinnerATS.classList.add('winner')
+            roadWinnerATS.classList.remove('winner')
+            roadWinnerATS.classList.add('loser')
+        } else {
+            roadWinnerATS.classList.add('winner')
+            homeWinnerATS.classList.remove('winner')
+            homeWinnerATS.classList.add('loser')
+        }
+
+        // let expertWinCounter = 0;
+
+        // if(game_state === "Final" && homeWinnerSU.classList.contains('winner') && live_home_team_score > live_road_team_score) {
+        //     expertWinCounter++
+        // } else if (game_state === "Final" && roadWinnerSU.classList.contains('winner') && live_road_team_score > live_home_team_score) {
+        //     expertWinCounter++
+        // } 
+
+
+        // console.log(expertWinCounter + " out of 16 games correct")
+
         let home_icon = new Image()
             let home_extension = ".svg"
             let team_initials = home_team_id
             home_icon.src = "icons/" + team_initials + home_extension
             home_icon.classList.add('svg-logo');
-
             let chinchilla = document.querySelectorAll('.home-logo-expert')
             chinchilla[i].append(home_icon) 
 
@@ -223,8 +251,6 @@ fetch('/games')
             let away_initials = road_team_id
             away_icon.src = "icons/" + away_initials + away_extension
             away_icon.classList.add('svg-logo');
-
-
             let monkey = document.querySelectorAll('.road-logo-expert')
             monkey[i].append(away_icon) 
         }
