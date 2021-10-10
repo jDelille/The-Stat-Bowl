@@ -18,7 +18,7 @@ and (min-device-width: 375px)  {
     .main-left {
         width: 95vw;
         height: 90vh;
-        margin-bottom: 80px;
+        margin-bottom: 50px;
     }
 
     .display-stats {
@@ -34,6 +34,11 @@ and (min-device-width: 375px)  {
     .favorites-label {
         width: 95vw;
         
+    }
+
+    .brand {
+        position: relative;
+        right: 40px;
     }
 
    .hide {
@@ -92,5 +97,6 @@ and (min-device-width: 375px)  {
 
     .news {
         padding: 40px 20px;
+        height: 100px;
     }
   }
