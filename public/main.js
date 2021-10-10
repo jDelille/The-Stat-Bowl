@@ -32,11 +32,24 @@ fetch('/display')
                         <h1 class="road-wins"> ${road_team_wins} - ${road_team_losses}</h1>
                     </div>
                     <div class="status">
-                    <h1>${kickoff_display}</h1>
+                    <h1 class="game-status">${kickoff_display}</h1>
                     </div>
                 </div>
             </div>
             ` 
+
+            let homeWins = document.querySelectorAll('.home-wins')[i]
+            let roadWins = document.querySelectorAll('.road-wins')[i]
+            let gameStatus = document.querySelectorAll('.game-status')[i]
+
+            if(game_state === "Final") {
+                homeWins.innerHTML = `${live_home_team_score}`
+                roadWins.innerHTML = `${live_road_team_score}`
+                gameStatus.innerHTML = `${game_state}`
+                
+            }
+
+
             let home_icon = new Image()
             let home_extension = ".svg"
             let team_initials = home_team_id
@@ -106,72 +119,40 @@ btn.addEventListener('click', () => {
     })
 })
 
-// FAVORITES CONTAINER - - - - - - - -
-favBtn.addEventListener('click', (e) => {
-    e.preventDefault()
-    let select = document.getElementById('select-team').value
-    favorites.innerHTML = `
-        <div class='fav-team'> 
-            <h1 class="view">${select}</h1>
-        </div>
-    `
-    let favTeamBtn = document.querySelector('.view')
-    favTeamBtn.addEventListener('click', () => {
-        let ya = favTeamBtn.innerText 
-    fetch(`/team/${ya}`)
-        .then(res => res.json())
-        .then(data => {
-            const {photo, name, team_id, games_played, PlayerPassingCompletions, PlayerPassingAttempts, PlayerPassingCompletionPercentage, PlayerPassingYards, PlayerPassingLong,  PlayerPassingTouchdowns,PlayerPassingInterceptions, PlayerPassingSacks, PlayerRushingYards, FumblesLost, PlayerRushingLong, PlayerRushingTouchdowns} = data
 
-            display.innerHTML = `
-            <div class="player">
-                <img src = ${photo} />
-                <h1><span>Player:</span> <br> ${name}</h1>
-                <h1><span>Team:</span> <br> ${team_id}</h1>
-                <h1><span>Games Played:</span> <br> ${games_played}</h1>
-            </div>
-            <div class="player-stats">
-                <div class="top-stats stats">
-                <div class="stat-labels">  
-                    <h1>Touchdowns</h1>
-                    <h1>Interceptions</h1>
-                    <h1>Sacks</h1>
-                </div>
-                    <h1>${PlayerPassingTouchdowns.value}</h1>
-                    <h1>${PlayerPassingInterceptions.value}</h1>
-                    <h1>${PlayerPassingSacks.value}</h1>
-                </div>
-                <div class="middle-stats stats">
-                <div class="stat-labels">
-                    <h1>Completions</h1>
-                    <h1>Longest Pass</h1>
-                    <h1>Total Yards</h1> 
-                </div>
-                    <h1>${PlayerPassingCompletions.value}</h1>
-                    <h1>${PlayerPassingLong.value}</h1>
-                    <h1>${PlayerPassingYards.value}</h1>
-                </div>
-                <div class="bottom-stats stats">
-                <div class="stat-labels">
-                    <h1>Rushing Yards</h1>
-                    <h1>Longest Rush</h1>
-                    <h1>Rushing Touchdowns</h1>
-                </div>
-                    <h1>${PlayerRushingYards.value}</h1>
-                    <h1>${PlayerRushingTouchdowns.value}</h1>
-                    <h1>${PlayerRushingLong.value}</h1>
-                </div>
-            </div>
-        `
 
-        let fav_team_icon = new Image()
-        fav_team_icon.src = "icons/" + ya + ".svg"
-        fav_team_icon.classList.add('svg-logo');
-        let fav_icon = document.querySelectorAll('.fav-team-icon')
-        fav_icon.append(fav_team_icon) 
-        })
+fetch('/news')
+    .then(res => res.json())
+    .then(data => {
+        for(let i = 0; i < data.length; i++) {
+            const {team_id, name, position, headline, analysis } = data[i]
+            
+           
+
+            favorites.innerHTML += `
+                <div class="news">
+                    <div class="player-news">
+                        <div class="news-icon">
+                        </div>
+                        <h1 class="name">${name}, ${position}</h1>
+                    </div>
+                    
+                    <h1 class="headline">${headline}</h1>
+                </div>
+            `
+
+            let team_icon = new Image()
+            let extension = ".svg"
+            let team_initials = team_id
+            team_icon.src = "icons/" + team_initials + extension
+            team_icon.classList.add('betting-svg-logo');;
+            let chinch = document.querySelectorAll('.news-icon')
+            chinch[i].append(team_icon) 
+        }
     })
-})
+
+
+
 
 // EXPERT PICKS CONTAINER - - - - - - - - 
 let expertPicks = document.querySelector('.expert-picks')
@@ -186,18 +167,17 @@ fetch('/games')
                 <div class="ht-picks">
                     <div class="logo-name">
                         <div class="home-logo-expert"></div>
-                        <h1>${home_team_id}</h1>
                     </div>
                     <h1 class="home-winner">${ht_pct_su_experts}%</h1>
-                    <h1 class="home-winner-ats">${ht_pct_ats_experts}%</h1>
+                    <h1 class="home-winner-ats"> ${ht_pct_ats_experts}%</h1>
                 </div>
                 <div class="rt-picks">
                     <div class="logo-name">
                         <div class="road-logo-expert"></div>
-                        <h1>${road_team_id}</h1>
+                        
                     </div>
-                    <h1 class="road-winner">${rt_pct_su_experts}%</h1>
-                    <h1 class="road-winner-ats">${rt_pct_ats_experts}%</h1>
+                    <h1 class="road-winner"> ${rt_pct_su_experts}%</h1>
+                    <h1 class="road-winner-ats"> ${rt_pct_ats_experts}%</h1>
                 </div>
             </div>
         `
@@ -227,17 +207,20 @@ fetch('/games')
             homeWinnerATS.classList.add('loser')
         }
 
+       
+
         // let expertWinCounter = 0;
 
-        // if(game_state === "Final" && homeWinnerSU.classList.contains('winner') && live_home_team_score > live_road_team_score) {
-        //     expertWinCounter++
-        // } else if (game_state === "Final" && roadWinnerSU.classList.contains('winner') && live_road_team_score > live_home_team_score) {
-        //     expertWinCounter++
-        // } 
+        // // if(game_state === "Final" && homeWinnerSU.classList.contains('winner') && live_home_team_score > live_road_team_score) {
+        // //     expertWinCounter++
+        // // }
+        // // } 
 
 
-        // console.log(expertWinCounter + " out of 16 games correct")
 
+        // let expertKD = document.querySelector('.expert-kd')
+
+        // expertKD.innerHTML = expertWinCounter
 
         const buttonRight = document.querySelector('.scroll-right');
         const buttonLeft = document.querySelector('.scroll-left');
@@ -253,7 +236,7 @@ fetch('/games')
             let home_extension = ".svg"
             let team_initials = home_team_id
             home_icon.src = "icons/" + team_initials + home_extension
-            home_icon.classList.add('svg-logo');
+            home_icon.classList.add('betting-svg-logo');;
             let chinchilla = document.querySelectorAll('.home-logo-expert')
             chinchilla[i].append(home_icon) 
 
@@ -261,7 +244,7 @@ fetch('/games')
             let away_extension = ".svg"
             let away_initials = road_team_id
             away_icon.src = "icons/" + away_initials + away_extension
-            away_icon.classList.add('svg-logo');
+            away_icon.classList.add('betting-svg-logo');;
             let monkey = document.querySelectorAll('.road-logo-expert')
             monkey[i].append(away_icon) 
         }
