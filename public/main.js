@@ -11,8 +11,10 @@ let topDisplay = document.querySelector('.top-display')
 fetch('/display')
     .then(res => res.json())
     .then(data => {
+        console.log(data)
         for(let i = 0; i < data.length; i++) {
             const {home_team_id, home_team_spread, road_team_spread,road_team_id,kickoff_display,ht_pct_su_experts,rt_pct_su_experts,ht_pct_ats_experts,home_team_odds_ats_ame, road_team_odds_ats_ame, rt_pct_ats_experts, game_state, home_team_wins, home_team_losses, road_team_wins, road_team_losses, home_team_score, road_team_score, live_home_team_score, live_road_team_score, DownAndDistance, Possession, } = data[i]
+            
         
             // TOP GAME BAR
             //+= returns every value
@@ -46,6 +48,14 @@ fetch('/display')
                 homeWins.innerHTML = `${live_home_team_score}`
                 roadWins.innerHTML = `${live_road_team_score}`
                 gameStatus.innerHTML = `${game_state}`
+                
+            }
+
+            if(game_state === "InProgress") {
+                homeWins.innerHTML = `${live_home_team_score}`
+                roadWins.innerHTML = `${live_road_team_score}`
+                gameStatus.innerHTML = `Q${data[i].additional_data.Quarter}, ${data[i].additional_data.TimeRemaining}`
+
                 
             }
 
