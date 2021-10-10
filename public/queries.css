@@ -1,5 +1,5 @@
 @media screen 
-and (max-device-width: 1400px) 
+and (max-device-width: 600px) 
 and (min-device-width: 375px)  {
     body {
       background-color: white;
