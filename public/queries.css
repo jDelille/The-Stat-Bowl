@@ -6,10 +6,14 @@ and (min-device-width: 375px)  {
       height: 200vh;
     }
 
+    .top-display {
+        margin-bottom: 80px;
+    }
+
     .main {
         display: flex;
         flex-direction: column;
-        height: 160vh;
+        height: auto;
     }
     .main-left {
         width: 95vw;
