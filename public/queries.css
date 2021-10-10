@@ -1,0 +1,45 @@
+@media screen 
+and (max-device-width: 1400px) 
+and (min-device-width: 375px)  {
+    body {
+      background-color: white;
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+    }
+    .main-left {
+        width: 95vw;
+        height: 80vh;
+        margin-bottom: 40px;
+    }
+
+    .display-stats {
+        height: 70vh;
+    }
+
+    .main-right {
+        width: 95vw;
+
+    }
+    .favorites-label {
+        width: 95vw;
+        
+    }
+
+    .favorites {
+        width: 95vw;
+        height: 40vh;
+        margin-bottom: 40px;
+
+    }
+
+    .expert-picks-label {
+        width: 95vw;
+    }
+    
+    .expert-picks {
+        width: 95vw;
+    }
+  }
