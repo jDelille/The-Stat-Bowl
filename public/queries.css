@@ -7,7 +7,7 @@ and (min-device-width: 375px)  {
     }
 
     .top-display {
-        margin-bottom: 50px;
+        margin-bottom: 30px;
     }
 
     .main {
@@ -18,7 +18,7 @@ and (min-device-width: 375px)  {
     .main-left {
         width: 95vw;
         height: 90vh;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
     }
 
     .display-stats {
@@ -36,7 +36,7 @@ and (min-device-width: 375px)  {
         
     }
 
-    .brand {
+    .brand h1 {
         position: relative;
         right: 40px;
     }
@@ -101,7 +101,7 @@ and (min-device-width: 375px)  {
 
     .news {
         padding: 40px 20px;
-        height: 200px;
+        height: auto;
     }
 
     .headline {
