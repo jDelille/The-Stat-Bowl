@@ -43,6 +43,11 @@ fetch('/display')
             let homeWins = document.querySelectorAll('.home-wins')[i]
             let roadWins = document.querySelectorAll('.road-wins')[i]
             let gameStatus = document.querySelectorAll('.game-status')[i]
+            let homeWinning = document.querySelectorAll('.home-team')[i]
+            let homeWinningLogo = document.querySelectorAll('.home-logo')[i]
+            let roadWinning = document.querySelectorAll('.road-team')[i]
+
+
 
             if(game_state === "Final") {
                 homeWins.innerHTML = `${live_home_team_score}`
@@ -55,8 +60,12 @@ fetch('/display')
                 homeWins.innerHTML = `${live_home_team_score}`
                 roadWins.innerHTML = `${live_road_team_score}`
                 gameStatus.innerHTML = `Q${data[i].additional_data.Quarter}, ${data[i].additional_data.TimeRemaining}`
+            }
 
-                
+            if(live_home_team_score > live_road_team_score) {
+                homeWinning.classList.add('winning');
+            } else if (live_road_team_score > live_home_team_score) {
+                roadWinning.classList.add('winning');
             }
 
 
