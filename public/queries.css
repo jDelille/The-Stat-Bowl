@@ -3,11 +3,13 @@ and (max-device-width: 1400px)
 and (min-device-width: 375px)  {
     body {
       background-color: white;
+      height: 150vh;
     }
 
     .main {
         display: flex;
         flex-direction: column;
+        height: 160vh;
     }
     .main-left {
         width: 95vw;
@@ -41,5 +43,9 @@ and (min-device-width: 375px)  {
     
     .expert-picks {
         width: 95vw;
+    }
+
+    .filler {
+        height: 50vh;
     }
   }
