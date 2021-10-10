@@ -62,6 +62,10 @@ fetch('/display')
                 gameStatus.innerHTML = `Q${data[i].additional_data.Quarter}, ${data[i].additional_data.TimeRemaining}`
             }
 
+            if(data[i].additional_data.Quarter === 'HALF') {
+                gameStatus.innerHTML = `Halftime`
+            }
+
             if(live_home_team_score > live_road_team_score) {
                 homeWinning.classList.add('winning');
             } else if (live_road_team_score > live_home_team_score) {
