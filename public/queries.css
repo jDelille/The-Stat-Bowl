@@ -103,4 +103,8 @@ and (min-device-width: 375px)  {
         padding: 40px 20px;
         height: 120px;
     }
+
+    .headline {
+        margin: 20px 0;
+    }
   }
