@@ -30,7 +30,7 @@ app.get('/display', async (req, res) => {
     res.status(200).send(display)
 })
 
-let URL = 'https://api.nflpickwatch.com/v1/nfl/stats?context=player&noRank=false&toWeek=5&fromWeek=1&toSeason=2021&fromSeason=2021&limit=40&fields[]=PlayerPassingCompletions&fields[]=PlayerPassingAttempts&fields[]=PlayerPassingCompletionPercentage&fields[]=PlayerPassingYards&fields[]=PlayerPassingYardsPerAttempt&fields[]=PlayerPassingYardsPerGame&fields[]=PlayerPassingLong&fields[]=PlayerPassingTouchdowns&fields[]=PlayerPassingInterceptions&fields[]=PlayerPassingSacks&fields[]=PlayerRushingYards&fields[]=FumblesLost&fields[]=PlayerRushingLong&fields[]=PlayerRushingTouchdowns&fields[]=PassingPlayPercentage' 
+let URL = 'https://api.nflpickwatch.com/v1/nfl/stats?context=player&noRank=false&toWeek=6&fromWeek=1&toSeason=2021&fromSeason=2021&limit=40&fields[]=PlayerPassingCompletions&fields[]=PlayerPassingAttempts&fields[]=PlayerPassingCompletionPercentage&fields[]=PlayerPassingYards&fields[]=PlayerPassingYardsPerAttempt&fields[]=PlayerPassingYardsPerGame&fields[]=PlayerPassingLong&fields[]=PlayerPassingTouchdowns&fields[]=PlayerPassingInterceptions&fields[]=PlayerPassingSacks&fields[]=PlayerRushingYards&fields[]=FumblesLost&fields[]=PlayerRushingLong&fields[]=PlayerRushingTouchdowns&fields[]=PassingPlayPercentage' 
 
 app.get('/team/:team_id', async (req, res) => {
     const response = await axios.get(URL)
