@@ -72,9 +72,14 @@ fetch('/display')
 btn.addEventListener('click', () => {
     let select = document.getElementById('select-team')
     fetch(`/team/${select.value}`)
+    
     .then(res => res.json())
+    
     .then(data => {
         const {photo, name, team_id, games_played, PlayerPassingCompletions, PlayerPassingAttempts, PlayerPassingCompletionPercentage, PlayerPassingYards, PlayerPassingLong,  PlayerPassingTouchdowns,PlayerPassingInterceptions, PlayerPassingSacks, PlayerRushingYards, FumblesLost, PlayerRushingLong, PlayerRushingTouchdowns} = data
+        
+
+
 
         display.innerHTML = `
             <div class="player">
@@ -89,12 +94,75 @@ btn.addEventListener('click', () => {
                     <h1>Touchdowns</h1>
                     <h1>Interceptions</h1>
                     <h1>Sacks</h1>
+                    <h1>Completions</h1>
+                    <h1>Longest Pass</h1>
+                    <h1>Total Yards</h1> 
                 </div>
                     <h1>${PlayerPassingTouchdowns.value}</h1>
                     <h1>${PlayerPassingInterceptions.value}</h1>
                     <h1>${PlayerPassingSacks.value}</h1>
+                    <h1>${PlayerPassingCompletions.value}</h1>
+                    <h1>${PlayerPassingLong.value}</h1>
+                    <h1>${PlayerPassingYards.value}</h1>
                 </div>
                 <div class="middle-stats stats">
+                <div class="stat-labels">  
+                    
+                </div>
+                <div class="stat-labels">
+                    
+                </div>
+                    
+                </div>
+            </div>
+
+            <div class="doughnut">
+                <div class="chartBox">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+            `
+            let ctx = document.getElementById('myChart')
+
+            const chartData = []
+            chartData.push(PlayerPassingTouchdowns.value)
+            chartData.push(PlayerPassingInterceptions.value)
+            chartData.push(PlayerPassingSacks.value)
+
+            
+
+
+            var myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['TD', 'INT', 'Sacks'],
+                    datasets: [{
+                        label: '',
+                        data: chartData,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                }
+            });
+
+            
+    })
+    
+})
+
+
+{/* <div class="middle-stats stats">
                 <div class="stat-labels">
                     <h1>Completions</h1>
                     <h1>Longest Pass</h1>
@@ -106,18 +174,14 @@ btn.addEventListener('click', () => {
                 </div>
                 <div class="bottom-stats stats">
                 <div class="stat-labels">
-                    <h1>Rushing Yards</h1>
-                    <h1>Longest Rush</h1>
-                    <h1>Rushing Touchdowns</h1>
+                    
                 </div>
                     <h1>${PlayerRushingYards.value}</h1>
                     <h1>${PlayerRushingTouchdowns.value}</h1>
                     <h1>${PlayerRushingLong.value}</h1>
-                </div>
-            </div>
-            `
-    })
-})
+                </div> */}
+
+
 
 
 
