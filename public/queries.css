@@ -14,11 +14,12 @@ and (min-device-width: 375px)  {
     .main-left {
         width: 95vw;
         height: 90vh;
-        margin-bottom: 40px;
+        margin-bottom: 80px;
     }
 
     .display-stats {
-        height: 90vh;
+        height: 100vh;
+        padding: 20px 0;
     }
 
     .main-right {
@@ -66,7 +67,8 @@ and (min-device-width: 375px)  {
     .favorites {
         width: 95vw;
         height: 35vh;
-        margin-bottom: 40px;
+        margin-bottom: 80px;
+
 
     }
 
