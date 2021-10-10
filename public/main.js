@@ -107,9 +107,9 @@ btn.addEventListener('click', () => {
         display.innerHTML = `
             <div class="player">
                 <img src = ${photo} />
-                <h1><span>Player:</span> <br> ${name}</h1>
-                <h1><span>Team:</span> <br> ${team_id}</h1>
-                <h1><span>Games Played:</span> <br> ${games_played}</h1>
+                <h1 class="player-name"><span>Player:</span> <br> ${name}</h1>
+                <h1 class="player-team"><span>Team:</span> <br> ${team_id}</h1>
+                <h1 class="player-games"><span>Games Played:</span> <br> ${games_played}</h1>
             </div>
             <div class="player-stats">
                 <div class="top-stats stats">
@@ -117,16 +117,16 @@ btn.addEventListener('click', () => {
                     <h1>Touchdowns</h1>
                     <h1>Interceptions</h1>
                     <h1>Sacks</h1>
-                    <h1>Completions</h1>
-                    <h1>Longest Pass</h1>
-                    <h1>Total Yards</h1> 
+                    <h1 class="hide">Completions</h1>
+                    <h1 class="hide">Longest Pass</h1>
+                    <h1 class="hide">Total Yards</h1> 
                 </div>
                     <h1>${PlayerPassingTouchdowns.value}</h1>
                     <h1>${PlayerPassingInterceptions.value}</h1>
                     <h1>${PlayerPassingSacks.value}</h1>
-                    <h1>${PlayerPassingCompletions.value}</h1>
-                    <h1>${PlayerPassingLong.value}</h1>
-                    <h1>${PlayerPassingYards.value}</h1>
+                    <h1 class="hide">${PlayerPassingCompletions.value}</h1>
+                    <h1 class="hide">${PlayerPassingLong.value}</h1>
+                    <h1 class="hide">${PlayerPassingYards.value}</h1>
                 </div>
                 <div class="middle-stats stats">
                 <div class="stat-labels">  

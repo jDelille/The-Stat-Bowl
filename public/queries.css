@@ -3,7 +3,7 @@ and (max-device-width: 1400px)
 and (min-device-width: 375px)  {
     body {
       background-color: white;
-      height: 150vh;
+      height: 200vh;
     }
 
     .main {
@@ -13,16 +13,17 @@ and (min-device-width: 375px)  {
     }
     .main-left {
         width: 95vw;
-        height: 80vh;
+        height: 90vh;
         margin-bottom: 40px;
     }
 
     .display-stats {
-        height: 70vh;
+        height: 90vh;
     }
 
     .main-right {
         width: 95vw;
+        height: auto;
 
     }
     .favorites-label {
@@ -30,9 +31,41 @@ and (min-device-width: 375px)  {
         
     }
 
+   .hide {
+       display: none;
+   }
+
+    .top-stats {
+        
+    }
+
+    .player {
+    }
+
+    .player-name {
+        height: 100%;
+    }
+
+    .player-team {
+        height: 100%;
+    }
+
+    .player-games {
+        display: none;
+    }
+
+    .doughnut {
+        position: relative;
+        bottom: 30px;
+    }
+
+    .scroll-arrows {
+        display: none;
+    }
+
     .favorites {
         width: 95vw;
-        height: 40vh;
+        height: 35vh;
         margin-bottom: 40px;
 
     }
@@ -43,9 +76,11 @@ and (min-device-width: 375px)  {
     
     .expert-picks {
         width: 95vw;
+        height: 60vh;
+        margin-bottom: 40px;
     }
 
     .filler {
-        height: 50vh;
+        height: 10vh;
     }
   }
