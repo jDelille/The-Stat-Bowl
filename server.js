@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/games', async (req, res) => {
-    const response = await axios.get('https://api.nflpickwatch.com/v1/general/games/2021/5/nfl')
+    const response = await axios.get('https://api.nflpickwatch.com/v1/general/games/2021/6/nfl')
     const expertPicks = response.data
     res.status(200).send(expertPicks)
 })
