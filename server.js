@@ -25,7 +25,7 @@ app.get('/news', async (req, res) => {
 })
 
 app.get('/display', async (req, res) => {
-    const response = await axios.get('https://api.nflpickwatch.com/v1/general/games/2021/5/nfl')
+    const response = await axios.get('https://api.nflpickwatch.com/v1/general/games/2021/6/nfl')
     const display = response.data
     res.status(200).send(display)
 })
@@ -43,7 +43,7 @@ app.get('/team/:team_id', async (req, res) => {
 })
 
 app.get('/match/:home_team_id', async (req, res) => {
-    const response = await axios.get('https://api.nflpickwatch.com/v1/general/games/2021/5/nfl')
+    const response = await axios.get('https://api.nflpickwatch.com/v1/general/games/2021/6/nfl')
     const {home_team_id} = req.params
 
     const filterTeam = response.data.filter((playerObj) => {
