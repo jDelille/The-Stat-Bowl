@@ -1,5 +1,6 @@
 # The-Stat-Bowl
 The Stat Bowl is a website to view NFL games, QB stats, and expert picks
+This website is not designed for most mobile devices yet.
 
 Javascript | Node js | Express | Cors | Axios 
 
