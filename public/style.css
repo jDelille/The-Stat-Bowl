@@ -98,7 +98,6 @@ header {
     background-color: var(--gray-bg);
     color: var(--dark-font);
     border: 1px solid #c9ccd0;
-    border: 1px solid red;
 }
 .svg-logo {
     max-width: 20px;
