@@ -1,6 +1,7 @@
 @media screen 
-and (max-device-width: 600px) 
-and (min-device-width: 375px)  {
+and (max-device-width: 1036px) 
+/* and (min-device-width: 1036px)  { */ {
+
     body {
       background-color: white;
       height: 200vh;

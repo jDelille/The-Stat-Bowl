@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/games', async (req, res) => {
-    const response = await axios.get('https://api.nflpickwatch.com/v1/general/games/2021/6/nfl')
+    const response = await axios.get('https://api.nflpickwatch.com/v1/general/games/2021/8/nfl')
     const expertPicks = response.data
     res.status(200).send(expertPicks)
 })
@@ -25,12 +25,12 @@ app.get('/news', async (req, res) => {
 })
 
 app.get('/display', async (req, res) => {
-    const response = await axios.get('https://api.nflpickwatch.com/v1/general/games/2021/6/nfl')
+    const response = await axios.get('https://api.nflpickwatch.com/v1/general/games/2021/8/nfl')
     const display = response.data
     res.status(200).send(display)
 })
 
-let URL = 'https://api.nflpickwatch.com/v1/nfl/stats?context=player&noRank=false&toWeek=6&fromWeek=1&toSeason=2021&fromSeason=2021&limit=40&fields[]=PlayerPassingCompletions&fields[]=PlayerPassingAttempts&fields[]=PlayerPassingCompletionPercentage&fields[]=PlayerPassingYards&fields[]=PlayerPassingYardsPerAttempt&fields[]=PlayerPassingYardsPerGame&fields[]=PlayerPassingLong&fields[]=PlayerPassingTouchdowns&fields[]=PlayerPassingInterceptions&fields[]=PlayerPassingSacks&fields[]=PlayerRushingYards&fields[]=FumblesLost&fields[]=PlayerRushingLong&fields[]=PlayerRushingTouchdowns&fields[]=PassingPlayPercentage' 
+let URL = 'https://api.nflpickwatch.com/v1/nfl/stats?context=player&noRank=false&toWeek=8&fromWeek=1&toSeason=2021&fromSeason=2021&limit=40&fields[]=PlayerPassingCompletions&fields[]=PlayerPassingAttempts&fields[]=PlayerPassingCompletionPercentage&fields[]=PlayerPassingYards&fields[]=PlayerPassingYardsPerAttempt&fields[]=PlayerPassingYardsPerGame&fields[]=PlayerPassingLong&fields[]=PlayerPassingTouchdowns&fields[]=PlayerPassingInterceptions&fields[]=PlayerPassingSacks&fields[]=PlayerRushingYards&fields[]=FumblesLost&fields[]=PlayerRushingLong&fields[]=PlayerRushingTouchdowns&fields[]=PassingPlayPercentage' 
 
 app.get('/team/:team_id', async (req, res) => {
     const response = await axios.get(URL)
@@ -43,7 +43,7 @@ app.get('/team/:team_id', async (req, res) => {
 })
 
 app.get('/match/:home_team_id', async (req, res) => {
-    const response = await axios.get('https://api.nflpickwatch.com/v1/general/games/2021/6/nfl')
+    const response = await axios.get('https://api.nflpickwatch.com/v1/general/games/2021/8/nfl')
     const {home_team_id} = req.params
 
     const filterTeam = response.data.filter((playerObj) => {

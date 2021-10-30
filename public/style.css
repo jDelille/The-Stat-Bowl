@@ -14,7 +14,7 @@ body {
 =============== */
 header {
     width: 100%;
-    height: 55px;
+    height: 6vh;
     display: flex;
     align-items: center;
     box-shadow: rgb(0 0 0 / 25%) 2px -1px 4px;
@@ -23,7 +23,7 @@ header {
 .brand {
     font-size: 12px;
     position: relative;
-    left: 40px;
+    left: 7%;
     text-transform: uppercase;
 }
 
@@ -77,8 +77,8 @@ header {
     width: 100%;
     align-items: center;
     justify-content: space-between;
-    height: 80px;
-    top: 50px;
+    min-height: 80px;
+    top: 6vh;
     background-color: var(--light-bg);
     box-shadow: rgb(0 0 0 / 25%) -1px 0px 6px;
     overflow-x: scroll;
@@ -92,12 +92,13 @@ header {
     display: flex;
     border-right: 2px solid #DEE2E6;
     justify-content: center;
-    padding: 5px 10px;
+    padding: 0 10px;
     cursor: pointer;
     height: 100%;
     background-color: var(--gray-bg);
     color: var(--dark-font);
     border: 1px solid #c9ccd0;
+    border: 1px solid red;
 }
 .svg-logo {
     max-width: 20px;
